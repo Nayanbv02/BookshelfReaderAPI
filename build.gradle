@@ -11,6 +11,9 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.withType(JavaCompile) {
@@ -33,4 +36,12 @@ dependencies {
 
     // Dependencia explícita de javax.persistence (opcional si ya está incluida)
     implementation 'javax.persistence:javax.persistence-api:2.2'
+
+    // Dependencias para JWT y seguridad
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-web'
+    
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
 }
