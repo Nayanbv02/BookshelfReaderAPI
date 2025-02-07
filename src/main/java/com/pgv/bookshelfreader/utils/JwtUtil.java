@@ -14,7 +14,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtUtil {
 
-    private String secret = "WypSTURgvp+PtuSfYHwFmEICsEa+etI4lvOGvu4n7o8="; // Cambia esto por una clave secreta más segura
+    private String secret = "WypSTURgvp+PtuSfYHwFmEICsEa+etI4lvOGvu4n7o8=";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
