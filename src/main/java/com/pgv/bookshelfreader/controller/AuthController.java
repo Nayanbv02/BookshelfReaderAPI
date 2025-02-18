@@ -29,8 +29,7 @@ public class AuthController {
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest loginRequest) {
         Usuarios usuario = usuariosRepository.findByNombre(loginRequest.nombre);
-        if (usuario != null && passwordEncoder.matches(loginRequest.clave, usuario.getClave())) { // ✅ Comparar con
-                                                                                                  // BCrypt
+        if (usuario != null && passwordEncoder.matches(loginRequest.clave, usuario.getClave())) {
             return jwtUtil.generateToken(usuario.getNombre());
         } else {
             throw new RuntimeException("Credenciales inválidas");
@@ -39,6 +38,10 @@ public class AuthController {
 
     @PostMapping("/register")
     public String register(@RequestBody RegisterRequest registerRequest) {
+        if (registerRequest.clave.length() < 5 || registerRequest.clave.length() > 25) {
+            throw new RuntimeException("La clave debe tener entre 5 y 25 caracteres");
+        }
+        
         Usuarios usuario = new Usuarios();
         usuario.setNombre(registerRequest.nombre);
         usuario.setClave(passwordEncoder.encode(registerRequest.clave));
@@ -47,8 +50,9 @@ public class AuthController {
         return "Usuario registrado";
     }
 
-    // Clases internas para las solicitudes de login y registro
     public static class LoginRequest {
+        public LoginRequest(String string, String string2) {
+        }
         public String nombre;
         public String clave;
     }

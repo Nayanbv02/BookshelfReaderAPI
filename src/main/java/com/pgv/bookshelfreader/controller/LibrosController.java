@@ -36,17 +36,15 @@ public class LibrosController {
     }
 
     @PostMapping("/usuario/{usuarioId}")
-public Libros crearLibro(@PathVariable Long usuarioId, @RequestBody Libros libro) {
-    // Verificar si el usuario existe
-    Usuarios usuario = usuariosRepository.findById(usuarioId)
-            .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con id: " + usuarioId));
-    
-    // Asociar el libro al usuario encontrado
-    libro.setUsuario(usuario);
-    
-    // Guardar el libro en la tabla libros
-    return librosRepository.save(libro);
-}
+    public Libros crearLibro(@PathVariable Long usuarioId, @RequestBody Libros libro) {
+
+        Usuarios usuario = usuariosRepository.findById(usuarioId)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con id: " + usuarioId));
+
+        libro.setUsuario(usuario);
+
+        return librosRepository.save(libro);
+    }
 
     @GetMapping("/{id_libro}")
     public Libros obtenerLibroPorId(@PathVariable Long id_libro) {

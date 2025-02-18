@@ -27,6 +27,15 @@ public class Libros {
 
     public Libros() {}
 
+    public Libros(String nombre_pdf, String ruta_pdf, String favorito, Long ultima_pagina, Usuarios usuario) {
+        this.nombre_pdf = nombre_pdf;
+        this.ruta_pdf = ruta_pdf;
+        this.favorito = favorito;
+        this.ultima_pagina = ultima_pagina;
+        this.usuario = usuario;
+    }
+
+
     public Long getId_libro() {
         return id_libro;
     }

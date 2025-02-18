@@ -1,14 +1,23 @@
 package com.pgv.bookshelfreader.controller;
 
-import com.pgv.bookshelfreader.model.Marcadores;
-import com.pgv.bookshelfreader.model.Libros;
-import com.pgv.bookshelfreader.repository.MarcadoresRepository;
-import com.pgv.bookshelfreader.repository.LibrosRepository;
-import com.pgv.bookshelfreader.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.pgv.bookshelfreader.ResourceNotFoundException;
+import com.pgv.bookshelfreader.model.Libros;
+import com.pgv.bookshelfreader.model.Marcadores;
+import com.pgv.bookshelfreader.repository.LibrosRepository;
+import com.pgv.bookshelfreader.repository.MarcadoresRepository;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -17,7 +26,7 @@ public class MarcadoresController {
 
     @Autowired
     private MarcadoresRepository marcadoresRepository;
-    
+
     @Autowired
     private LibrosRepository librosRepository;
 
@@ -48,7 +57,7 @@ public class MarcadoresController {
         marcador.setNumero_pagina(detallesMarcador.getNumero_pagina());
         marcador.setColor(detallesMarcador.getColor());
         marcador.setFecha(detallesMarcador.getFecha());
-        
+
         return marcadoresRepository.save(marcador);
     }
 

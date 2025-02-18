@@ -44,4 +44,18 @@ dependencies {
     
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
+
+    // Base de datos en memoria para pruebas
+    runtimeOnly 'com.h2database:h2'
+
+    // Dependencias para testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+}
+
+test {
+    useJUnitPlatform()
 }

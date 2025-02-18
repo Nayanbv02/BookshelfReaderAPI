@@ -20,7 +20,13 @@ public class Usuarios {
 
     public Usuarios() {}
 
-     public Long getId() {
+    public Usuarios(String nombre, String correo, String clave) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.clave = clave;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -43,7 +49,7 @@ public class Usuarios {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
+
     public String getClave() {
         return clave;
     }
@@ -53,4 +59,3 @@ public class Usuarios {
     }
 
 }
-
