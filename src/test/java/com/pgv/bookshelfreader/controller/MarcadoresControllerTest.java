@@ -52,7 +52,7 @@ class MarcadoresControllerTest {
         usuariosRepository.deleteAll();
 
         usuario = usuariosRepository.save(new Usuarios("usuarioTest", "correo@test.com", "claveTest"));
-        Libros libro = librosRepository.save(new Libros("Libro Test", "ruta/test", "0", 100L, usuario));
+        Libros libro = librosRepository.save(new Libros("Libro Test", "ruta/test", "0", 100L, usuario, null));
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = dateFormat.parse("2024-02-18");

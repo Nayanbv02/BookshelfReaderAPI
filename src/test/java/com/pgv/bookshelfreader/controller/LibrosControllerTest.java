@@ -45,8 +45,8 @@ class LibrosControllerTest {
         // Usuario y libros de prueba
         Usuarios usuario = usuariosRepository.save(new Usuarios("usuarioTest", "correo@test.com", "claveTest"));
 
-        librosRepository.save(new Libros("Libro1", "Ruta1", "0", 25L, usuario));
-        librosRepository.save(new Libros("Libro2", "Ruta2", "1", 72L, usuario));
+        librosRepository.save(new Libros("Libro1", "Ruta1", "0", 25L, usuario, null));
+        librosRepository.save(new Libros("Libro2", "Ruta2", "1", 72L, usuario, null));
     }
 
     private String obtenerTokenJwt(String nombre, String clave) throws Exception {

@@ -1,12 +1,6 @@
 package com.pgv.bookshelfreader.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "libros")
@@ -25,16 +19,20 @@ public class Libros {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuarios usuario;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria", nullable = true)
+    private Categorias categoria;
+
     public Libros() {}
 
-    public Libros(String nombre_pdf, String ruta_pdf, String favorito, Long ultima_pagina, Usuarios usuario) {
+    public Libros(String nombre_pdf, String ruta_pdf, String favorito, Long ultima_pagina, Usuarios usuario, Categorias categoria) {
         this.nombre_pdf = nombre_pdf;
         this.ruta_pdf = ruta_pdf;
         this.favorito = favorito;
         this.ultima_pagina = ultima_pagina;
         this.usuario = usuario;
+        this.categoria = categoria;
     }
-
 
     public Long getId_libro() {
         return id_libro;
@@ -82,5 +80,13 @@ public class Libros {
 
     public void setUsuario(Usuarios usuario) {
         this.usuario = usuario;
+    }
+
+    public Categorias getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categorias categoria) {
+        this.categoria = categoria;
     }
 }
